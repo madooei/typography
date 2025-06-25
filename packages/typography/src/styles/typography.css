@@ -1,0 +1,799 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Recursive:wght@300..1000&display=swap");
+
+/**
+ * TYPOGRAPHY CSS VARIABLES - Self-contained system with descriptive names
+ *
+ * Users can map these variables to their own design systems (e.g., shadcn/ui):
+ *
+ * Example mapping to shadcn/ui:
+ *
+ * --typography-text-color: var(--foreground) !important;
+ * --typography-text-muted: var(--muted-foreground) !important;
+ * --typography-border-color: var(--border) !important;
+ * --typography-background-muted: var(--muted) !important;
+ * --typography-background-color: var(--background) !important;
+ * --typography-link-color: var(--primary) !important;
+ * --typography-highlight-background: var(--secondary) !important;
+ * --typography-highlight-text: var(--secondary-foreground) !important;
+ * --typography-background-card: var(--card) !important;
+ * --typography-background-card-text: var(--card-foreground) !important;
+ *
+ * You can also map these variables to other design systems like Tailwind CSS, Material UI, etc.
+ * For example, in Tailwind CSS, you can map the fonts to their respective classes:
+ *
+ * --typography-font-sans: var(--font-sans) !important;
+ * --typography-font-serif: var(--font-serif) !important;
+ * --typography-font-mono: var(--font-mono) !important;
+ */
+
+.typography {
+  /* Enable container queries for this element */
+  container-type: inline-size;
+
+  /* --- TYPOGRAPHY DESIGN SYSTEM BASE VARIABLES --- */
+  /* Users should override these colors */
+  --typography-text-color: oklch(0.145 0 0);
+  --typography-text-muted: oklch(0.29 0 0);
+  --typography-border-color: oklch(0.922 0 0);
+  --typography-background-muted: oklch(0.97 0 0);
+  --typography-background-color: oklch(1 0 0);
+  --typography-link-color: oklch(0.205 0 0);
+  --typography-highlight-background: oklch(0.97 0 0);
+  --typography-highlight-text: oklch(0.205 0 0);
+  --typography-background-card: oklch(1 0 0);
+  --typography-background-card-text: oklch(0.145 0 0);
+
+  --typography-font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --typography-font-serif:
+    ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --typography--font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+  --typography-font-family: var(--typography-font-sans);
+
+  /* Users can adjust these base values */
+  --typography-font-size-base: 1rem; /* The root font size for the typography component */
+  --typography-line-height-base: 1.75; /* Base line height for body text */
+  --typography-spacing-unit: 0.25rem; /* A base unit for all spacing calculations */
+  --typography-font-scale: 1.25; /* A modular scale factor (e.g., major third, perfect fifth) */
+  --typography-heading-scale: 1.15; /* A modular scale factor for headings */
+
+  /* --- DERIVED TYPOGRAPHY VARIABLES (Design Tokens) --- */
+
+  /* Spacing Scale (based on --typography-spacing-unit) */
+  --typography-space-xs: calc(
+    0.5 * var(--typography-spacing-unit)
+  ); /* 0.125rem */
+  --typography-space-sm: var(--typography-spacing-unit); /* 0.25rem */
+  --typography-space-md: calc(2 * var(--typography-spacing-unit)); /* 0.5rem */
+  --typography-space-lg: calc(4 * var(--typography-spacing-unit)); /* 1rem */
+  --typography-space-xl: calc(8 * var(--typography-spacing-unit)); /* 2rem */
+  --typography-space-xxl: calc(12 * var(--typography-spacing-unit)); /* 3rem */
+  --typography-space-xxxl: calc(16 * var(--typography-spacing-unit)); /* 4rem */
+
+  /* Font Size Scale (based on --typography-font-size-base and --typography-font-scale) */
+  --typography-font-size-sm: calc(
+    var(--typography-font-size-base) / var(--typography-font-scale)
+  ); /* For small text */
+  --typography-font-size-body: var(--typography-font-size-base);
+  --typography-font-size-lead: calc(
+    var(--typography-font-size-base) * var(--typography-font-scale)
+  ); /* For lead paragraphs */
+  --typography-font-size-h6: calc(
+    var(--typography-font-size-base) * var(--typography-heading-scale)
+  );
+  --typography-font-size-h5: calc(
+    var(--typography-font-size-h6) * var(--typography-heading-scale)
+  );
+  --typography-font-size-h4: calc(
+    var(--typography-font-size-h5) * var(--typography-heading-scale)
+  );
+  --typography-font-size-h3: calc(
+    var(--typography-font-size-h4) * var(--typography-heading-scale)
+  );
+  --typography-font-size-h2: calc(
+    var(--typography-font-size-h3) * var(--typography-heading-scale)
+  );
+  --typography-font-size-h1: calc(
+    var(--typography-font-size-h2) * var(--typography-heading-scale)
+  );
+  --typography-font-size-code: calc(
+    var(--typography-font-size-base) * 0.875
+  ); /* Adjust based on preference */
+  --typography-font-size-caption: calc(
+    var(--typography-font-size-base) * 0.875
+  ); /* For figcaption, small text */
+  --typography-font-size-sub-sup: calc(
+    var(--typography-font-size-base) * 0.75
+  ); /* For sub/sup */
+
+  /* Line Height Scale */
+  --typography-line-height-body: var(--typography-line-height-base);
+  --typography-line-height-heading: 1; /* Generally tighter for headings */
+  --typography-line-height-lead: 1.6;
+  --typography-line-height-caption: 1.4;
+  --typography-line-height-code: 1.7; /* For preformatted code blocks */
+
+  /* General typography styles using variables */
+  max-width: clamp(20rem, 65ch, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--typography-space-lg); /* 1rem */
+  padding-right: var(--typography-space-lg); /* 1rem */
+  padding-top: var(--typography-space-xl); /* 2rem */
+  padding-bottom: var(--typography-space-xl); /* 2rem */
+  color: var(--typography-text-color);
+  background-color: var(--typography-background-color);
+  font-family: var(--typography-font-family);
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+  font-size: var(--typography-font-size-body);
+  line-height: var(--typography-line-height-body);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+/* Dark mode support */
+.dark .typography {
+  --typography-text-color: oklch(0.985 0 0);
+  --typography-text-muted: oklch(1 0 0 / 77%);
+  --typography-border-color: oklch(1 0 0 / 10%);
+  --typography-background-muted: oklch(0.369 0 0);
+  --typography-background-color: oklch(0.26 0 0);
+  --typography-link-color: oklch(0.922 0 0);
+  --typography-highlight-background: oklch(0.269 0 0);
+  --typography-highlight-text: oklch(0.985 0 0);
+  --typography-background-card: oklch(0.24 0 0);
+  --typography-background-card-text: oklch(0.985 0 0);
+}
+
+/* First and last child margin reset */
+.typography > :first-child {
+  margin-top: 0;
+}
+
+.typography > :last-child {
+  margin-bottom: 0;
+}
+
+/* Paragraphs */
+.typography p {
+  margin-top: var(
+    --typography-font-size-body
+  ); /* 1em margin-top based on current font-size */
+  margin-bottom: var(
+    --typography-font-size-body
+  ); /* 1em margin-bottom based on current font-size */
+  line-height: var(--typography-line-height-body);
+}
+
+/* Lead paragraph */
+.typography .lead {
+  color: var(--typography-text-muted);
+  font-size: var(--typography-font-size-lead);
+  line-height: var(--typography-line-height-lead);
+  margin-top: calc(var(--typography-font-size-lead) * 1.2);
+  margin-bottom: calc(var(--typography-font-size-lead) * 1.2);
+}
+
+/* Headings */
+.typography h1 {
+  color: var(--typography-text-color);
+  font-weight: 800;
+  font-size: var(--typography-font-size-h1);
+  margin-top: 0;
+  margin-bottom: calc(
+    var(--typography-font-size-h1) * 0.8888889
+  ); /* Adjust using heading line height for more precise control */
+  line-height: var(--typography-line-height-heading);
+}
+
+.typography h2 {
+  color: var(--typography-text-color);
+  font-weight: 700;
+  font-size: var(--typography-font-size-h2);
+  margin-top: calc(var(--typography-font-size-h2) * 2);
+  margin-bottom: calc(var(--typography-font-size-h2) * 1);
+  line-height: var(--typography-line-height-heading);
+  border-bottom: 1px solid var(--typography-border-color);
+  padding-bottom: calc(var(--typography-font-size-h2) * 0.5);
+}
+
+.typography h2:first-child {
+  margin-top: 0;
+}
+
+.typography h3 {
+  color: var(--typography-text-color);
+  font-weight: 600;
+  font-size: var(--typography-font-size-h3);
+  margin-top: calc(var(--typography-font-size-h3) * 1.6);
+  margin-bottom: calc(var(--typography-font-size-h3) * 0.6);
+  line-height: var(--typography-line-height-heading);
+}
+
+.typography h4 {
+  color: var(--typography-text-color);
+  font-weight: 600;
+  font-size: var(--typography-font-size-h4);
+  margin-top: calc(var(--typography-font-size-h4) * 1.5);
+  margin-bottom: calc(var(--typography-font-size-h4) * 0.5);
+  line-height: var(--typography-line-height-heading);
+}
+
+.typography h5 {
+  color: var(--typography-text-color);
+  font-weight: 600;
+  font-size: var(--typography-font-size-h5);
+  margin-top: calc(var(--typography-font-size-h5) * 1.5);
+  margin-bottom: calc(var(--typography-font-size-h5) * 0.5);
+  line-height: var(--typography-line-height-heading);
+}
+
+.typography h6 {
+  color: var(--typography-text-color);
+  font-weight: 600;
+  font-size: var(--typography-font-size-h6);
+  margin-top: calc(var(--typography-font-size-h6) * 1.5);
+  margin-bottom: calc(var(--typography-font-size-h6) * 0.5);
+  line-height: var(--typography-line-height-heading);
+}
+
+/* Reset margins after headings */
+.typography h2 + *,
+.typography h3 + *,
+.typography h4 + *,
+.typography h5 + *,
+.typography h6 + * {
+  margin-top: 0;
+}
+
+/* Images and media */
+.typography img,
+.typography video,
+.typography picture {
+  margin-top: var(
+    --typography-space-xl
+  ); /* 2em (or 2rem in this case as base font size is 1rem) */
+  margin-bottom: var(--typography-space-xl); /* 2em (or 2rem) */
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.typography picture > img {
+  margin-top: 0;
+  margin-bottom: 0;
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.typography figure {
+  margin-top: var(--typography-space-xl);
+  margin-bottom: var(--typography-space-xl);
+}
+
+.typography figure > * {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.typography figcaption {
+  color: var(--typography-text-muted);
+  font-size: var(--typography-font-size-caption);
+  line-height: var(--typography-line-height-caption);
+  margin-top: calc(var(--typography-font-size-caption) * 0.8571429);
+  text-align: center;
+  font-style: italic;
+}
+
+/* Lists */
+.typography ul {
+  list-style-type: disc;
+  margin-top: var(--typography-font-size-body);
+  margin-bottom: var(--typography-font-size-body);
+  padding-left: calc(var(--typography-font-size-body) * 1.625);
+}
+
+.typography ol {
+  list-style-type: decimal;
+  margin-top: var(--typography-font-size-body);
+  margin-bottom: var(--typography-font-size-body);
+  padding-left: calc(var(--typography-font-size-body) * 1.625);
+}
+
+.typography li {
+  margin-top: calc(var(--typography-font-size-body) * 0.5);
+  margin-bottom: calc(var(--typography-font-size-body) * 0.5);
+}
+
+.typography ol > li,
+.typography ul > li {
+  padding-left: calc(var(--typography-font-size-body) * 0.375);
+}
+
+/* Nested lists */
+.typography ul ul,
+.typography ul ol,
+.typography ol ul,
+.typography ol ol {
+  margin-top: calc(var(--typography-font-size-body) * 0.75);
+  margin-bottom: calc(var(--typography-font-size-body) * 0.75);
+}
+
+/* List paragraphs */
+.typography > ul > li p {
+  margin-top: calc(var(--typography-font-size-body) * 0.75);
+  margin-bottom: calc(var(--typography-font-size-body) * 0.75);
+}
+
+.typography > ul > li > p:first-child {
+  margin-top: var(--typography-font-size-body);
+}
+
+.typography > ul > li > p:last-child {
+  margin-bottom: var(--typography-font-size-body);
+}
+
+.typography > ol > li > p:first-child {
+  margin-top: var(--typography-font-size-body);
+}
+
+.typography > ol > li > p:last-child {
+  margin-bottom: var(--typography-font-size-body);
+}
+
+/* Definition lists */
+.typography dl {
+  margin-top: var(--typography-font-size-body);
+  margin-bottom: var(--typography-font-size-body);
+}
+
+.typography dt {
+  color: var(--typography-text-color);
+  font-weight: 600;
+  margin-top: var(--typography-font-size-body);
+}
+
+.typography dd {
+  margin-top: calc(var(--typography-font-size-body) * 0.5);
+  padding-left: calc(var(--typography-font-size-body) * 1.625);
+}
+
+/* Horizontal rule */
+.typography hr {
+  border-color: var(--typography-border-color);
+  border-top-width: 1px;
+  margin-top: var(--typography-space-xxl); /* 2rem */
+  margin-bottom: var(--typography-space-xxl); /* 2rem */
+}
+
+.typography hr + * {
+  margin-top: 0;
+}
+
+/* Blockquotes */
+.typography blockquote {
+  font-weight: 400;
+  color: var(--typography-text-color);
+  quotes: "\201C" "\201D" "\2018" "\2019";
+  margin-top: calc(var(--typography-font-size-body) * 1.6);
+  margin-bottom: calc(var(--typography-font-size-body) * 1.6);
+  padding-left: calc(var(--typography-font-size-body) * 1.6);
+}
+
+.typography blockquote p:first-of-type::before {
+  content: open-quote;
+}
+
+.typography blockquote p:last-of-type::after {
+  content: close-quote;
+}
+
+.typography blockquote cite {
+  color: var(--typography-text-muted);
+  font-size: var(--typography-font-size-caption);
+  font-style: normal;
+  font-weight: 400;
+  display: block;
+  text-align: right;
+  margin-top: calc(var(--typography-font-size-caption) * 0.5);
+}
+
+.typography blockquote cite::before {
+  content: "— ";
+}
+
+/* Tables */
+.typography table {
+  width: 100%;
+  min-width: 100%;
+  max-width: 100%;
+  table-layout: auto;
+  text-align: left;
+  margin-top: var(--typography-space-xl); /* 2rem */
+  margin-bottom: var(--typography-space-xl); /* 2rem */
+  padding-bottom: var(
+    --typography-space-lg
+  ); /* 1rem - consider if this should be relative to table font size */
+  font-size: var(
+    --typography-font-size-caption
+  ); /* Tables often use slightly smaller text */
+  line-height: var(--typography-line-height-body);
+  border-collapse: collapse;
+  border-spacing: 0;
+  scrollbar-width: thin;
+  scrollbar-color: var(--typography-border-color) transparent;
+}
+
+.typography thead {
+  border-bottom: 1px solid var(--typography-border-color);
+}
+
+.typography thead th {
+  color: var(--typography-text-color);
+  font-weight: 600;
+  vertical-align: bottom;
+  padding-right: calc(var(--typography-font-size-caption) * 0.5714286);
+  padding-bottom: calc(var(--typography-font-size-caption) * 0.5714286);
+  padding-left: calc(var(--typography-font-size-caption) * 0.5714286);
+}
+
+.typography thead th:first-child {
+  padding-left: 0;
+}
+
+.typography thead th:last-child {
+  padding-right: 0;
+}
+
+.typography tbody tr {
+  border-bottom: 1px solid var(--typography-border-color);
+}
+
+.typography tbody tr:last-child {
+  border-bottom-width: 0;
+}
+
+.typography tbody td,
+.typography tfoot td {
+  vertical-align: baseline;
+  padding-top: calc(var(--typography-font-size-caption) * 0.5714286);
+  padding-right: calc(var(--typography-font-size-caption) * 0.5714286);
+  padding-bottom: calc(var(--typography-font-size-caption) * 0.5714286);
+  padding-left: calc(var(--typography-font-size-caption) * 0.5714286);
+}
+
+.typography tbody td:first-child,
+.typography tfoot td:first-child {
+  padding-left: 0;
+}
+
+.typography tbody td:last-child,
+.typography tfoot td:last-child {
+  padding-right: 0;
+}
+
+/* Code */
+.typography code {
+  color: var(--typography-text-color);
+  font-weight: 500;
+  font-size: var(--typography-font-size-code);
+  background-color: var(--typography-background-muted);
+  padding: calc(var(--typography-font-size-code) * 0.125)
+    calc(var(--typography-font-size-code) * 0.25);
+  border-radius: 0.25rem;
+  border: 1px solid var(--typography-border-color);
+}
+
+.typography code::before,
+.typography code::after {
+  content: "";
+}
+
+/* Inline code in headings */
+.typography h2 code {
+  font-size: calc(
+    var(--typography-font-size-h2) * 0.875
+  ); /* Keep relative to heading size if desired */
+}
+
+.typography h3 code {
+  font-size: calc(
+    var(--typography-font-size-h3) * 0.9
+  ); /* Keep relative to heading size if desired */
+}
+
+/* Pre-formatted text */
+.typography pre {
+  color: var(--typography-text-color);
+  background-color: var(--typography-background-card);
+  overflow-x: auto;
+  max-width: 100%;
+  font-weight: 400;
+  font-size: var(--typography-font-size-code);
+  line-height: var(--typography-line-height-code);
+  margin-top: calc(
+    var(--typography-font-size-code) * var(--typography-line-height-code)
+  );
+  margin-bottom: calc(
+    var(--typography-font-size-code) * var(--typography-line-height-code)
+  );
+  border-radius: 0.375rem;
+  padding: calc(var(--typography-font-size-code) * 0.8571429)
+    calc(var(--typography-font-size-code) * 1.1428571);
+  border: 1px solid var(--typography-border-color);
+}
+
+.typography pre code {
+  background-color: transparent;
+  border-width: 0;
+  border-radius: 0;
+  padding: 0;
+  font-weight: inherit;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+}
+
+.typography pre code::before,
+.typography pre code::after {
+  content: none;
+}
+
+/* Keyboard input */
+.typography kbd {
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--typography-text-color);
+  background-color: var(--typography-background-muted);
+  border: 1px solid var(--typography-border-color);
+  border-radius: 0.3125rem;
+  font-size: var(--typography-font-size-code);
+  padding: calc(var(--typography-font-size-code) * 0.1875)
+    calc(var(--typography-font-size-code) * 0.375);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* Sample output */
+.typography samp {
+  font-weight: 400;
+  font-family:
+    ui-monospace, SFMono-Regular, "SF Mono", Consolas, "Liberation Mono", Menlo,
+    monospace;
+  color: var(--typography-text-color);
+  background-color: var(--typography-background-muted);
+  border: 1px solid var(--typography-border-color);
+  border-radius: 0.25rem;
+  font-size: var(--typography-font-size-code);
+  padding: calc(var(--typography-font-size-code) * 0.125)
+    calc(var(--typography-font-size-code) * 0.25);
+}
+
+/* Links */
+.typography a {
+  color: var(--typography-link-color);
+  text-decoration: underline;
+  text-underline-offset: 0.125em; /* This is fine as it's relative to the link's font size */
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--typography-border-color);
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+}
+
+.typography a:hover {
+  text-decoration-color: var(--typography-link-color);
+  color: var(--typography-link-color);
+}
+
+/* Strong and emphasis */
+.typography strong {
+  color: var(--typography-text-color);
+  font-weight: 600;
+}
+
+.typography em {
+  color: var(--typography-text-color);
+  font-style: italic;
+}
+
+/* Small text */
+.typography small {
+  color: var(--typography-text-muted);
+  font-size: var(--typography-font-size-caption);
+  line-height: var(--typography-line-height-caption);
+}
+
+/* Mark/highlight */
+.typography mark {
+  background-color: var(--typography-highlight-background);
+  color: var(--typography-highlight-text);
+  padding: calc(var(--typography-font-size-body) * 0.125)
+    calc(var(--typography-font-size-body) * 0.25);
+  border-radius: 0.125rem;
+}
+
+/* Strikethrough and underline */
+.typography s,
+.typography del {
+  color: var(--typography-text-muted);
+  text-decoration: line-through;
+}
+
+.typography ins {
+  color: var(--typography-text-color);
+  text-decoration: underline;
+  text-decoration-color: var(--typography-link-color);
+}
+
+/* Subscript and superscript */
+.typography sub,
+.typography sup {
+  font-size: var(--typography-font-size-sub-sup);
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+.typography sub {
+  bottom: -0.25em;
+}
+
+.typography sup {
+  top: -0.5em;
+}
+
+/* Abbreviations */
+.typography abbr {
+  text-decoration: underline dotted;
+  text-underline-offset: 0.125em;
+  cursor: help;
+}
+
+/* Definition */
+.typography dfn {
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Quotations */
+.typography q {
+  font-style: italic;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+
+.typography q::before {
+  content: open-quote;
+}
+
+.typography q::after {
+  content: close-quote;
+}
+
+/* Address */
+.typography address {
+  color: var(--typography-text-color);
+  font-style: normal;
+  line-height: inherit;
+  margin-top: var(--typography-font-size-body);
+  margin-bottom: var(--typography-font-size-body);
+}
+
+/* Time */
+.typography time {
+  color: var(--typography-text-muted);
+}
+
+/* Cite */
+.typography cite {
+  color: var(--typography-text-muted);
+  font-style: italic;
+}
+
+/* Custom callout styling */
+.typography .callout {
+  background-color: var(--typography-background-card);
+  border: 1px solid var(--typography-border-color);
+  border-radius: 0.5rem;
+  padding: calc(
+    var(--typography-font-size-body) * 1.5
+  ); /* Based on body font size */
+  margin-top: var(--typography-space-xl);
+  margin-bottom: var(--typography-space-xl);
+  font-size: calc(var(--typography-font-size-body) * 1.1);
+  line-height: var(--typography-line-height-body);
+  color: var(--typography-background-card-text);
+}
+
+/* Responsive typography - viewport-based */
+@media (min-width: 640px) {
+  .typography {
+    padding-left: calc(var(--typography-space-lg) * 1.5); /* 1.5rem */
+    padding-right: calc(var(--typography-space-lg) * 1.5); /* 1.5rem */
+  }
+}
+
+@media (min-width: 768px) {
+  .typography {
+    padding-left: var(--typography-space-xl); /* 2rem */
+    padding-right: var(--typography-space-xl); /* 2rem */
+    padding-top: var(--typography-space-xxl); /* 3rem */
+    padding-bottom: var(--typography-space-xxl); /* 3rem */
+  }
+}
+
+@media (min-width: 1024px) {
+  .typography {
+    --typography-font-size-base: 1.05rem;
+    max-width: 75ch;
+  }
+}
+
+/* Responsive typography - container-based */
+@container (min-width: 640px) {
+  .typography {
+    padding-left: calc(var(--typography-space-lg) * 1.5); /* 1.5rem */
+    padding-right: calc(var(--typography-space-lg) * 1.5); /* 1.5rem */
+  }
+}
+
+@container (min-width: 768px) {
+  .typography {
+    padding-left: var(--typography-space-xl); /* 2rem */
+    padding-right: var(--typography-space-xl); /* 2rem */
+    padding-top: var(--typography-space-xxl); /* 3rem */
+    padding-bottom: var(--typography-space-xxl); /* 3rem */
+  }
+}
+
+@container (min-width: 1024px) {
+  .typography {
+    --typography-font-size-base: 1.05rem;
+    max-width: 75ch;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Responsive typography adjustments - viewport-based */
+@media (max-width: 640px) {
+  .typography {
+    --typography-font-size-base: 0.875rem; /* Smaller base font size for small screens */
+    --typography-line-height-base: 1.7142857; /* Adjusted base line height for small screens */
+    --typography-heading-scale: 1.1; /* Smaller heading scale for small screens */
+    /* Spacing units might also be adjusted if desired, e.g., --typography-spacing-unit: 0.2rem; */
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* For tables, the display block and overflow-x auto still apply directly */
+  .typography table {
+    /* Ensure table remains scrollable on mobile */
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
+
+/* Responsive typography adjustments - container-based */
+@container (max-width: 640px) {
+  .typography {
+    /* Apply similar base variable overrides for container queries if independent scaling is desired */
+    --typography-font-size-base: 0.875rem;
+    --typography-line-height-base: 1.7142857;
+    --typography-heading-scale: 1.1;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .typography table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}
