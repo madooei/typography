@@ -1,0 +1,36 @@
+{
+  "folders": [
+    {
+      "path": "docs"
+    },
+    {
+      "path": "packages/typography"
+    },
+    {
+      "path": "examples/react-shadcn"
+    },
+    {
+      "path": "examples/react-tailwind3"
+    },
+    {
+      "path": "examples/react-tailwind4"
+    },
+    {
+      "path": "examples/react-basic"
+    },
+    {
+      "path": "examples/vanilla"
+    }
+  ],
+  "settings": {
+    "workbench.preferredDarkColorTheme": "Default Dark+",
+    "workbench.preferredLightColorTheme": "Default Light+",
+    "workbench.colorTheme": "Default Dark+",
+    "window.autoDetectColorScheme": true,
+    "window.zoomLevel": 1,
+    "terminal.integrated.fontSize": 18,
+    "terminal.integrated.lineHeight": 1.8,
+    "terminal.integrated.fontFamily": "MonoLisa",
+    "git.openRepositoryInParentFolders": "always"
+  }
+}
