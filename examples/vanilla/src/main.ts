@@ -1,0 +1,1 @@
+import "@madooei/typography/styles.css";
