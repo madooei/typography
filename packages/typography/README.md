@@ -70,6 +70,9 @@ You can customize the styles by overriding the CSS variables. Here is an example
 > [!IMPORTANT]
 > Don't forget to add the `!important` flag to the CSS variables to override the default styles.
 
+> [!TIP]
+> If you want transparent backgrounds, you can set the background color a nonexistent color variable, like `var(--undefined-color)`.
+
 ## Typography Component
 
 The package provides a `Typography` component that you can use to apply the typography styles to a specific element.
