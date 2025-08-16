@@ -55,7 +55,7 @@
   --typography-font-family: var(--typography-font-sans);
 
   /* Users can adjust these base values */
-  --typography-font-size-base: 1rem; /* The root font size for the typography component */
+  --typography-font-size-base: 1.2rem; /* The root font size for the typography component */
   --typography-line-height-base: 1.75; /* Base line height for body text */
   --typography-spacing-unit: 0.25rem; /* A base unit for all spacing calculations */
   --typography-font-scale: 1.25; /* A modular scale factor (e.g., major third, perfect fifth) */
@@ -117,6 +117,14 @@
   --typography-line-height-caption: 1.4;
   --typography-line-height-code: 1.7; /* For preformatted code blocks */
 
+  /* Letter and Word Spacing Scale (based on --typography-font-size-base) */
+  --typography-letter-spacing-body: calc(
+    var(--typography-font-size-base) * 0.1
+  ); /* 0.1em equivalent for improved readability */
+  --typography-word-spacing-body: calc(
+    var(--typography-font-size-base) * 0.12
+  ); /* 0.12em equivalent for improved readability */
+
   /* General typography styles using variables */
   max-width: clamp(20rem, 65ch, 100%);
   margin-left: auto;
@@ -132,6 +140,8 @@
   -moz-osx-font-smoothing: auto;
   font-size: var(--typography-font-size-body);
   line-height: var(--typography-line-height-body);
+  letter-spacing: var(--typography-letter-spacing-body);
+  word-spacing: var(--typography-word-spacing-body);
   word-wrap: break-word;
   overflow-wrap: break-word;
 }
