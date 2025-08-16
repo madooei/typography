@@ -32,9 +32,11 @@ const TypographyPage: React.FC = () => {
       </p>
 
       <blockquote>
-        Typography is what language looks like, and how it feels when we read
-        it. It's the invisible art form that shapes our experience of written
-        content.
+        <p>
+          Typography is what language looks like, and how it feels when we read
+          it. It's the invisible art form that shapes our experience of written
+          content.
+        </p>
         <cite>Ellen Lupton</cite>
       </blockquote>
 
