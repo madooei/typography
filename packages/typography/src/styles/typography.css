@@ -378,6 +378,7 @@
 
 /* Blockquotes */
 .typography blockquote {
+  font-size: calc(var(--typography-font-size-body) * 0.9);
   font-weight: 400;
   color: var(--typography-text-color);
   quotes: "\201C" "\201D" "\2018" "\2019";
@@ -396,12 +397,12 @@
 
 .typography blockquote cite {
   color: var(--typography-text-muted);
-  font-size: var(--typography-font-size-caption);
+  font-size: calc(var(--typography-font-size-caption) * 0.8);
   font-style: normal;
   font-weight: 400;
   display: block;
   text-align: right;
-  margin-top: calc(var(--typography-font-size-caption) * 0.5);
+  margin-top: 0;
 }
 
 .typography blockquote cite::before {
@@ -701,11 +702,11 @@
   border: 1px solid var(--typography-border-color);
   border-radius: 0.5rem;
   padding: calc(
-    var(--typography-font-size-body) * 1.5
+    var(--typography-font-size-body) * 1.2
   ); /* Based on body font size */
-  margin-top: var(--typography-space-xl);
-  margin-bottom: var(--typography-space-xl);
-  font-size: calc(var(--typography-font-size-body) * 1.1);
+  margin-top: var(--typography-space-lg);
+  margin-bottom: var(--typography-space-lg);
+  font-size: calc(var(--typography-font-size-body) * 0.9);
   line-height: var(--typography-line-height-body);
   color: var(--typography-background-card-text);
 }
