@@ -55,11 +55,21 @@
   --typography-font-family: var(--typography-font-sans);
 
   /* Users can adjust these base values */
-  --typography-font-size-base: 1.2rem; /* The root font size for the typography component */
+  --typography-font-size-base-value: 1.2rem; /* The actual base font size value */
   --typography-line-height-base: 1.75; /* Base line height for body text */
   --typography-spacing-unit: 0.25rem; /* A base unit for all spacing calculations */
   --typography-font-scale: 1.25; /* A modular scale factor (e.g., major third, perfect fifth) */
   --typography-heading-scale: 1.15; /* A modular scale factor for headings */
+  --typography-line-length-base: 65ch; /* The actual base line length value */
+
+  /* Typography scaling factors for user adjustments */
+  --typography-font-size-scale: 1; /* Scale factor for font size (default: no scaling) */
+  --typography-line-length-scale: 1; /* Scale factor for line length (default: no scaling) */
+
+  /* Calculated base values using scaling factors */
+  --typography-font-size-base: calc(
+    var(--typography-font-size-base-value) * var(--typography-font-size-scale)
+  );
 
   /* --- DERIVED TYPOGRAPHY VARIABLES (Design Tokens) --- */
 
@@ -76,9 +86,12 @@
 
   /* Font Size Scale (based on --typography-font-size-base and --typography-font-scale) */
   --typography-font-size-sm: calc(
-    var(--typography-font-size-base) / var(--typography-font-scale)
+    var(--typography-font-size-base) * var(--typography-font-size-scale) /
+      var(--typography-font-scale)
   ); /* For small text */
-  --typography-font-size-body: var(--typography-font-size-base);
+  --typography-font-size-body: calc(
+    var(--typography-font-size-base) * var(--typography-font-size-scale)
+  );
   --typography-font-size-lead: calc(
     var(--typography-font-size-base) * var(--typography-font-scale)
   ); /* For lead paragraphs */
@@ -126,7 +139,13 @@
   ); /* 0.12em equivalent for improved readability */
 
   /* General typography styles using variables */
-  max-width: clamp(20rem, 65ch, 100%);
+  max-width: clamp(
+    20rem,
+    calc(
+      var(--typography-line-length-base) * var(--typography-line-length-scale)
+    ),
+    100%
+  );
   margin-left: auto;
   margin-right: auto;
   padding-left: var(--typography-space-lg); /* 1rem */
@@ -740,8 +759,8 @@
 
 @media (min-width: 1024px) {
   .typography {
-    --typography-font-size-base: 1.05rem;
-    max-width: 75ch;
+    --typography-font-size-base-value: 1.05rem;
+    --typography-line-length-base: 75ch;
   }
 }
 
@@ -764,8 +783,8 @@
 
 @container (min-width: 1024px) {
   .typography {
-    --typography-font-size-base: 1.05rem;
-    max-width: 75ch;
+    --typography-font-size-base-value: 1.05rem;
+    --typography-line-length-base: 75ch;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -774,7 +793,7 @@
 /* Responsive typography adjustments - viewport-based */
 @media (max-width: 640px) {
   .typography {
-    --typography-font-size-base: 0.875rem; /* Smaller base font size for small screens */
+    --typography-font-size-base-value: 0.875rem; /* Smaller base font size for small screens */
     --typography-line-height-base: 1.7142857; /* Adjusted base line height for small screens */
     --typography-heading-scale: 1.1; /* Smaller heading scale for small screens */
     /* Spacing units might also be adjusted if desired, e.g., --typography-spacing-unit: 0.2rem; */
@@ -795,7 +814,7 @@
 @container (max-width: 640px) {
   .typography {
     /* Apply similar base variable overrides for container queries if independent scaling is desired */
-    --typography-font-size-base: 0.875rem;
+    --typography-font-size-base-value: 0.875rem;
     --typography-line-height-base: 1.7142857;
     --typography-heading-scale: 1.1;
     max-width: 100%;
