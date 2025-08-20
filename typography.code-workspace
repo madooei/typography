@@ -20,6 +20,9 @@
     },
     {
       "path": "examples/vanilla"
+    },
+    {
+      "path": "examples/adjust-size"
     }
   ],
   "settings": {
