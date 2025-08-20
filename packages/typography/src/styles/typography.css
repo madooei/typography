@@ -155,9 +155,9 @@
   color: var(--typography-text-color);
   background-color: var(--typography-background-color);
   font-family: var(--typography-font-family);
-  font-weight: 200; 
-  -webkit-font-smoothing: antialiased; 
-  -moz-osx-font-smoothing: grayscale; 
+  font-weight: 200;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-size: var(--typography-font-size-body);
   line-height: var(--typography-line-height-body);
   letter-spacing: var(--typography-letter-spacing-body);
